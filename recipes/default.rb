@@ -89,6 +89,7 @@ end
 # NSCD and SSSD don't play well together.
 # https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/usingnscd-sssd.html
 package 'nscd' do
+  only_if { node[:sssd_ldap][:remove_nscd] }
   action :remove
 end
 
